@@ -28,7 +28,7 @@ const FormComponent = () => {
         name: "password",
         errors:
           value && (value.length < 3 || value.length > 12)
-            ? ["Your password is between 4 and 12 characters"]
+            ? ["Your password is between 3 and 12 characters"]
             : [],
       },
     ]);
