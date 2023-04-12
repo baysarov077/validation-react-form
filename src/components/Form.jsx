@@ -49,6 +49,7 @@ const FormComponent = () => {
 
   const handleRememberMeChange = (e) => {
     setRememberMe(e.target.checked);
+    form.setFields([{name: "remember"}])
   };
 
   const handleSwitchChange = (checked) => {
@@ -62,14 +63,19 @@ const FormComponent = () => {
 
   const handleRadioChange = (e) => {
     setRadioValue(e.target.value);
+    form.setFields([{name: "radioSelection"}])
   };
+
+  const handleDropdownChange = () => {
+    form.setFields([{name: 'dropdownTitle'}])
+  }
 
   return (
     <>
       <Form layout="vertical" form={form} onFinish={handleSubmit}>
         <Form.Item
           label="Username"
-          name="username"
+          name="userName"
           rules={[{ required: true, message: "Enter username" }]}
         >
           <Input size="large" value={username} onChange={handleUsernameChange} />
@@ -92,14 +98,16 @@ const FormComponent = () => {
 
         <Form.Item
           label="Input Text label"
-          name="text"
+          name="inputLabelText"
           rules={[{ required: true, message: "Enter text" }]}
         >
           <Input.TextArea size="large" value={text} onChange={handleTextChange} />
         </Form.Item>
 
-        <Form.Item>
-          <Checkbox checked={rememberMe} onChange={handleRememberMeChange}>
+        <Form.Item
+          name="rememberMe"
+        >
+          <Checkbox value={rememberMe} checked={rememberMe} onChange={handleRememberMeChange}>
             Remember me
           </Checkbox>
         </Form.Item>
@@ -108,7 +116,7 @@ const FormComponent = () => {
           <Switch checked={switchValue} onChange={handleSwitchChange} /> {switchValue ? 'on' : 'off'}
         </Form.Item>
 
-        <Form.Item>
+        <Form.Item name="radioSelection">
           <Radio.Group onChange={handleRadioChange} value={radioValue}>
             <Space direction="vertical">
               <Radio value={1}>Radio selection 1</Radio>
@@ -118,9 +126,10 @@ const FormComponent = () => {
           </Radio.Group>
         </Form.Item>
 
-        <Form.Item>
+        <Form.Item name='dropdownTitle'>
           <Space wrap>
             <Select
+              onChange={handleDropdownChange}
               defaultValue="Dropdown option"
               style={{ width: 220 }}
               size="large"
