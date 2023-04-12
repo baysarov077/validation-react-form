@@ -49,7 +49,6 @@ const FormComponent = () => {
 
   const handleRememberMeChange = (e) => {
     setRememberMe(e.target.checked);
-    form.setFields([{name: "remember"}])
   };
 
   const handleSwitchChange = (checked) => {
@@ -63,12 +62,11 @@ const FormComponent = () => {
 
   const handleRadioChange = (e) => {
     setRadioValue(e.target.value);
-    form.setFields([{name: "radioSelection"}])
   };
 
-  const handleDropdownChange = () => {
-    form.setFields([{name: 'dropdownTitle'}])
-  }
+  const handleDropdownChange = (value) => {
+    console.log(value);
+  };
 
   return (
     <>
@@ -78,7 +76,11 @@ const FormComponent = () => {
           name="userName"
           rules={[{ required: true, message: "Enter username" }]}
         >
-          <Input size="large" value={username} onChange={handleUsernameChange} />
+          <Input
+            size="large"
+            value={username}
+            onChange={handleUsernameChange}
+          />
         </Form.Item>
 
         <Form.Item
@@ -93,7 +95,11 @@ const FormComponent = () => {
             },
           ]}
         >
-          <Input.Password size="large" value={password} onChange={handlePasswordChange} />
+          <Input.Password
+            size="large"
+            value={password}
+            onChange={handlePasswordChange}
+          />
         </Form.Item>
 
         <Form.Item
@@ -101,19 +107,26 @@ const FormComponent = () => {
           name="inputLabelText"
           rules={[{ required: true, message: "Enter text" }]}
         >
-          <Input.TextArea size="large" value={text} onChange={handleTextChange} />
+          <Input.TextArea
+            size="large"
+            value={text}
+            onChange={handleTextChange}
+          />
         </Form.Item>
 
-        <Form.Item
-          name="rememberMe"
-        >
-          <Checkbox value={rememberMe} checked={rememberMe} onChange={handleRememberMeChange}>
+        <Form.Item name="rememberMe">
+          <Checkbox
+            value={rememberMe}
+            checked={rememberMe}
+            onChange={handleRememberMeChange}
+          >
             Remember me
           </Checkbox>
         </Form.Item>
 
         <Form.Item name="switch" valuePropName="checked">
-          <Switch checked={switchValue} onChange={handleSwitchChange} /> {switchValue ? 'on' : 'off'}
+          <Switch checked={switchValue} onChange={handleSwitchChange} />{" "}
+          {switchValue ? "on" : "off"}
         </Form.Item>
 
         <Form.Item name="radioSelection">
@@ -126,7 +139,7 @@ const FormComponent = () => {
           </Radio.Group>
         </Form.Item>
 
-        <Form.Item name='dropdownTitle'>
+        <Form.Item name="dropdownTitle">
           <Space wrap>
             <Select
               onChange={handleDropdownChange}
@@ -134,9 +147,9 @@ const FormComponent = () => {
               style={{ width: 220 }}
               size="large"
               options={[
-                { value: "Dropdown option"},
-                { value: "Dropdown option 1"},
-                { value: "Dropdown option 2"},
+                { value: "Dropdown option" },
+                { value: "Dropdown option 1" },
+                { value: "Dropdown option 2" },
               ]}
             />
           </Space>
