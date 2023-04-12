@@ -72,7 +72,7 @@ const FormComponent = () => {
           name="username"
           rules={[{ required: true, message: "Enter username" }]}
         >
-          <Input value={username} onChange={handleUsernameChange} />
+          <Input size="large" value={username} onChange={handleUsernameChange} />
         </Form.Item>
 
         <Form.Item
@@ -87,7 +87,7 @@ const FormComponent = () => {
             },
           ]}
         >
-          <Input.Password value={password} onChange={handlePasswordChange} />
+          <Input.Password size="large" value={password} onChange={handlePasswordChange} />
         </Form.Item>
 
         <Form.Item
@@ -95,7 +95,7 @@ const FormComponent = () => {
           name="text"
           rules={[{ required: true, message: "Enter text" }]}
         >
-          <Input.TextArea value={text} onChange={handleTextChange} />
+          <Input.TextArea size="large" value={text} onChange={handleTextChange} />
         </Form.Item>
 
         <Form.Item>
