@@ -1,22 +1,15 @@
 import React, { useState } from "react";
-import {
-  Input,
-  Button,
-  Form,
-  Checkbox,
-  Switch,
-  Radio,
-  Space,
-  Select,
-} from "antd";
+import { Input, Form } from "antd";
+import RememberMe from "./RememberMe";
+import SwitchComponent from "./Switch";
+import RadioGroup from "./RadioGroup";
+import Dropdown from "./Dropdown";
+import ButtonComponent from "./Button";
 
 const FormComponent = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [text, setText] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-  const [switchValue, setSwitchValue] = useState(false);
-  const [radioValue, setRadioValue] = useState("");
   const [form] = Form.useForm();
 
   const handleUsernameChange = (e) => {
@@ -47,25 +40,9 @@ const FormComponent = () => {
     form.setFields([{ name: "text", errors: value ? [] : ["Enter text"] }]);
   };
 
-  const handleRememberMeChange = (e) => {
-    setRememberMe(e.target.checked);
-  };
-
-  const handleSwitchChange = (checked) => {
-    setSwitchValue(checked);
-  };
-
   const handleSubmit = () => {
     console.log("Form data:", form.getFieldsValue());
     form.resetFields();
-  };
-
-  const handleRadioChange = (e) => {
-    setRadioValue(e.target.value);
-  };
-
-  const handleDropdownChange = (value) => {
-    console.log(value);
   };
 
   return (
@@ -82,7 +59,6 @@ const FormComponent = () => {
             onChange={handleUsernameChange}
           />
         </Form.Item>
-
         <Form.Item
           label="Password"
           name="password"
@@ -114,56 +90,11 @@ const FormComponent = () => {
           />
         </Form.Item>
 
-        <Form.Item name="rememberMe">
-          <Checkbox
-            value={rememberMe}
-            checked={rememberMe}
-            onChange={handleRememberMeChange}
-          >
-            Remember me
-          </Checkbox>
-        </Form.Item>
-
-        <Form.Item name="switch" valuePropName="checked">
-          <Switch checked={switchValue} onChange={handleSwitchChange} />{" "}
-          {switchValue ? "on" : "off"}
-        </Form.Item>
-
-        <Form.Item name="radioSelection">
-          <Radio.Group onChange={handleRadioChange} value={radioValue}>
-            <Space direction="vertical">
-              <Radio value={1}>Radio selection 1</Radio>
-              <Radio value={2}>Radio selection 2</Radio>
-              <Radio value={3}>Radio selection 3</Radio>
-            </Space>
-          </Radio.Group>
-        </Form.Item>
-
-        <Form.Item name="dropdownTitle">
-          <Space wrap>
-            <Select
-              onChange={handleDropdownChange}
-              defaultValue="Dropdown option"
-              style={{ width: 220 }}
-              size="large"
-              options={[
-                { value: "Dropdown option" },
-                { value: "Dropdown option 1" },
-                { value: "Dropdown option 2" },
-              ]}
-            />
-          </Space>
-        </Form.Item>
-
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            disabled={!username || !password || !text}
-          >
-            Next
-          </Button>
-        </Form.Item>
+        <RememberMe />
+        <SwitchComponent />
+        <RadioGroup />
+        <Dropdown />
+        <ButtonComponent disabledRules={!username || !password || !text} />
       </Form>
     </>
   );
