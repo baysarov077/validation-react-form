@@ -1,4 +1,9 @@
-# Form by ant-design
+# Form with validation 
+
+## How to start?
+clone this repository and:
+### npm install
+### npm start
 
 ## Demo
 
