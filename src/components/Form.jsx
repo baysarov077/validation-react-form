@@ -5,6 +5,7 @@ import SwitchComponent from "./Switch";
 import RadioGroup from "./RadioGroup";
 import Dropdown from "./Dropdown";
 import ButtonComponent from "./Button";
+import Activity from "./Activity";
 
 const FormComponent = () => {
   const [username, setUsername] = useState("");
@@ -94,6 +95,7 @@ const FormComponent = () => {
         <SwitchComponent />
         <RadioGroup />
         <Dropdown />
+        <Activity />
         <ButtonComponent disabledRules={!username || !password || !text} />
       </Form>
     </>
