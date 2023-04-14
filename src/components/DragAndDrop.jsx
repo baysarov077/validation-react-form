@@ -5,7 +5,6 @@ import { Form, message, Upload } from "antd";
 const { Dragger } = Upload;
 
 const props = {
-  
   name: "file",
   multiple: true,
   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -27,15 +26,15 @@ const props = {
 
 const DragAndDrop = () => {
   return (
-    <Form.Item style={{width: '250px'}}>
-        <Dragger {...props}>
-          <p className="ant-upload-drag-icon">
-            <InboxOutlined />
-          </p>
-          <p className="ant-upload-text">
-            Click or drag file to this area to upload
-          </p>
-        </Dragger>
+    <Form.Item style={{ width: "250px" }}>
+      <Dragger {...props}>
+        <p className="ant-upload-drag-icon">
+          <InboxOutlined />
+        </p>
+        <p className="ant-upload-text">
+          Click or drag file to this area to upload
+        </p>
+      </Dragger>
     </Form.Item>
   );
 };

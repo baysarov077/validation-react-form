@@ -2,7 +2,6 @@ import { Form, Switch } from "antd";
 import React, { useState } from "react";
 
 const SwitchComponent = () => {
-
   const [switchValue, setSwitchValue] = useState(false);
 
   const handleSwitchChange = (checked) => {
@@ -10,7 +9,7 @@ const SwitchComponent = () => {
   };
 
   return (
-    <Form.Item name="switch" valuePropName="checked">
+    <Form.Item valuePropName="checked">
       <Switch checked={switchValue} onChange={handleSwitchChange} />{" "}
       {switchValue ? "on" : "off"}
     </Form.Item>

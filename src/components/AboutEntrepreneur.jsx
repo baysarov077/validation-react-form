@@ -1,13 +1,11 @@
-import { Form, Input } from 'antd';
-import React, { useState } from 'react';
-import DragAndDrop from './DragAndDrop';
+import { Form, Input } from "antd";
+import React, { useState } from "react";
+import DragAndDrop from "./DragAndDrop";
 
 const AboutEntrepreneur = () => {
-
   const [inn, setInn] = useState("");
   const [registrationDate, setRegistrationDate] = useState("");
-  const [ogrnip, setOgrnip] = useState("")
-
+  const [ogrnip, setOgrnip] = useState("");
 
   return (
     <div>
@@ -22,21 +20,15 @@ const AboutEntrepreneur = () => {
           onChange={(e) => setInn(e.target.value)}
         />
       </Form.Item>
-      <Form.Item
-        label="ОГРНИП"
-        name="ogrnip"
-      >
-        <Input 
-          size='large'
+      <Form.Item label="ОГРНИП" name="ogrnip">
+        <Input
+          size="large"
           value={ogrnip}
-          onChange={e => setOgrnip(e.target.value)}
-          rules={[{required: true, message: "Введите ОГРНИП"}]}
+          onChange={(e) => setOgrnip(e.target.value)}
+          rules={[{ required: true, message: "Введите ОГРНИП" }]}
         />
       </Form.Item>
-      <Form.Item
-        label="Registration date"
-        name="date"
-      >
+      <Form.Item label="Registration date" name="date">
         <Input
           size="large"
           value={registrationDate}

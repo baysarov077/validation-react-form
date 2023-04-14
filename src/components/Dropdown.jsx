@@ -2,7 +2,6 @@ import { Form, Select, Space } from "antd";
 import React from "react";
 
 const Dropdown = () => {
-
   const handleDropdownChange = (value) => {
     console.log(value);
   };

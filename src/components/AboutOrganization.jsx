@@ -38,30 +38,21 @@ function AboutOrganization() {
           onBlur={handleInnBlur}
         />
       </Form.Item>
-      <Form.Item
-        label="Organization name"
-        name="orgName"
-      >
+      <Form.Item label="Organization name" name="orgName">
         <Input
           size="large"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
         />
       </Form.Item>
-      <Form.Item
-        label="Organization short name"
-        name="orgShortName"
-      >
+      <Form.Item label="Organization short name" name="orgShortName">
         <Input
           size="large"
           value={shortName}
           onChange={(e) => setShortName(e.target.value)}
         />
       </Form.Item>
-      <Form.Item
-        label="Registration date"
-        name="date"
-      >
+      <Form.Item label="Registration date" name="date">
         <Input
           size="large"
           value={registrationDate}
@@ -71,7 +62,7 @@ function AboutOrganization() {
       <Form.Item
         label="ОГРН"
         name="ogrn"
-        rules={[{required: true, message: "Введите ОГРН"}]}
+        rules={[{ required: true, message: "Введите ОГРН" }]}
       >
         <Input
           size="large"

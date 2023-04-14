@@ -2,7 +2,6 @@ import { Checkbox, Form } from "antd";
 import React, { useState } from "react";
 
 const RememberMe = () => {
-
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleRememberMeChange = (e) => {
@@ -10,7 +9,7 @@ const RememberMe = () => {
   };
 
   return (
-    <Form.Item name="rememberMe">
+    <Form.Item>
       <Checkbox
         value={rememberMe}
         checked={rememberMe}

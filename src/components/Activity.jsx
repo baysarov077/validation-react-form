@@ -4,11 +4,10 @@ import AboutEntrepreneur from "./AboutEntrepreneur";
 import AboutOrganization from "./AboutOrganization";
 
 const Activity = () => {
-
-  const [dropdownValue, setDropdownValue] = useState('')
+  const [dropdownValue, setDropdownValue] = useState("");
 
   const handleActivityChange = (value) => {
-    setDropdownValue(value)
+    setDropdownValue(value);
   };
 
   return (
@@ -27,14 +26,11 @@ const Activity = () => {
           />
         </Space>
       </Form.Item>
-      {
-        dropdownValue === "Общество с ограниченной ответственностью (ООО)" ?
+      {dropdownValue === "Общество с ограниченной ответственностью (ООО)" ? (
         <AboutOrganization />
-        : dropdownValue === "Индивидуальный предприниматель (ИП)" ?
+      ) : dropdownValue === "Индивидуальный предприниматель (ИП)" ? (
         <AboutEntrepreneur />
-        : null
-        
-      }
+      ) : null}
     </>
   );
 };

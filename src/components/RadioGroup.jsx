@@ -2,7 +2,6 @@ import { Form, Radio, Space } from "antd";
 import React, { useState } from "react";
 
 const RadioGroup = () => {
-
   const [radioValue, setRadioValue] = useState("");
 
   const handleRadioChange = (e) => {
