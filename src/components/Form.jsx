@@ -3,47 +3,30 @@ import { Input, Form } from "antd";
 import RememberMe from "./RememberMe";
 import SwitchComponent from "./Switch";
 import RadioGroup from "./RadioGroup";
-import Dropdown from "./Dropdown";
 import ButtonComponent from "./Button";
 import Activity from "./Activity";
 
 const FormComponent = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [text, setText] = useState("");
+  const [formState, setFormState] = useState({
+    username: "",
+    password: "",
+    text: "",
+  });
   const [form] = Form.useForm();
 
-  const handleUsernameChange = (e) => {
-    const value = e.target.value;
-    setUsername(value);
-    form.setFields([
-      { name: "username", errors: value ? [] : ["Enter username"] },
-    ]);
-  };
-
-  const handlePasswordChange = (e) => {
-    const value = e.target.value;
-    setPassword(value);
-    form.setFields([
-      {
-        name: "password",
-        errors:
-          value && (value.length < 3 || value.length > 12)
-            ? ["Your password is between 3 and 12 characters"]
-            : [],
-      },
-    ]);
-  };
-
-  const handleTextChange = (e) => {
-    const value = e.target.value;
-    setText(value);
-    form.setFields([{ name: "text", errors: value ? [] : ["Enter text"] }]);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+    form.setFields([{ name, errors: value ? [] : [`Enter ${name}`] }]);
   };
 
   const handleSubmit = () => {
     console.log("Form data:", form.getFieldsValue());
     form.resetFields();
+    setFormState({ username: "", password: "", text: "" });
   };
 
   return (
@@ -51,13 +34,14 @@ const FormComponent = () => {
       <Form layout="vertical" form={form} onFinish={handleSubmit}>
         <Form.Item
           label="Username"
-          name="userName"
+          name="username"
           rules={[{ required: true, message: "Enter username" }]}
         >
           <Input
             size="large"
-            value={username}
-            onChange={handleUsernameChange}
+            name="username"
+            value={formState.username}
+            onChange={handleInputChange}
           />
         </Form.Item>
         <Form.Item
@@ -74,29 +58,33 @@ const FormComponent = () => {
         >
           <Input.Password
             size="large"
-            value={password}
-            onChange={handlePasswordChange}
+            name="password"
+            value={formState.password}
+            onChange={handleInputChange}
           />
         </Form.Item>
-
         <Form.Item
           label="Input Text label"
-          name="inputLabelText"
+          name="text"
           rules={[{ required: true, message: "Enter text" }]}
         >
           <Input.TextArea
             size="large"
-            value={text}
-            onChange={handleTextChange}
+            name="text"
+            value={formState.text}
+            onChange={handleInputChange}
           />
         </Form.Item>
 
         <RememberMe />
         <SwitchComponent />
         <RadioGroup />
-        <Dropdown />
         <Activity />
-        <ButtonComponent disabledRules={!username || !password || !text} />
+        <ButtonComponent
+          disabledRules={
+            !formState.username || !formState.password || !formState.text
+          }
+        />
       </Form>
     </>
   );

@@ -3,39 +3,68 @@ import React, { useState } from "react";
 import DragAndDrop from "./DragAndDrop";
 
 const AboutEntrepreneur = () => {
-  const [inn, setInn] = useState("");
-  const [registrationDate, setRegistrationDate] = useState("");
-  const [ogrnip, setOgrnip] = useState("");
+  const [formData, setFormData] = useState({
+    inn: "",
+    registrationDate: "",
+    ogrnip: "",
+  });
+
+  const handleFormChange = (fieldName, value) => {
+    setFormData((prevState) => ({ ...prevState, [fieldName]: value }));
+  };
 
   return (
     <div>
       <Form.Item
         label="ИНН"
-        name="ИНН"
+        name="inn"
         rules={[{ required: true, message: "Введите ИНН" }]}
+        labelCol={{ span: 6 }}
+        wrapperCol={{ span: 14 }}
       >
         <Input
+          type="number"
           size="large"
-          value={inn}
-          onChange={(e) => setInn(e.target.value)}
+          value={formData.inn}
+          onChange={(e) => handleFormChange("inn", e.target.value)}
+          placeholder="Введите ИНН"
         />
       </Form.Item>
-      <Form.Item label="ОГРНИП" name="ogrnip">
+      <Form.Item
+        label="ОГРНИП"
+        name="ogrnip"
+        rules={[
+          { required: true, message: "Введите ОГРНИП" },
+          { len: 15, message: "Длина ОГРНИП должна быть 15 цифр" },
+        ]}
+        labelCol={{ span: 6 }}
+        wrapperCol={{ span: 14 }}
+      >
         <Input
+          type="number"
           size="large"
-          value={ogrnip}
-          onChange={(e) => setOgrnip(e.target.value)}
-          rules={[{ required: true, message: "Введите ОГРНИП" }]}
+          value={formData.ogrnip}
+          onChange={(e) => handleFormChange("ogrnip", e.target.value)}
+          placeholder="Введите ОГРНИП"
         />
       </Form.Item>
-      <Form.Item label="Registration date" name="date">
+      <Form.Item
+        label="Дата регистрации"
+        name="registrationDate"
+        labelCol={{ span: 6 }}
+        wrapperCol={{ span: 14 }}
+      >
         <Input
+          type="date"
           size="large"
-          value={registrationDate}
-          onChange={(e) => setRegistrationDate(e.target.value)}
+          value={formData.registrationDate}
+          onChange={(e) => handleFormChange("registrationDate", e.target.value)}
+          placeholder="Введите дату регистрации"
         />
       </Form.Item>
-      <DragAndDrop />
+      <Form.Item>
+        <DragAndDrop />
+      </Form.Item>
     </div>
   );
 };

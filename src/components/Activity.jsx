@@ -3,12 +3,27 @@ import React, { useState } from "react";
 import AboutEntrepreneur from "./AboutEntrepreneur";
 import AboutOrganization from "./AboutOrganization";
 
+const ACTIVITY_OPTIONS = [
+  {
+    value: "Индивидуальный предприниматель (ИП)",
+    component: <AboutEntrepreneur />,
+  },
+  {
+    value: "Общество с ограниченной ответственностью (ООО)",
+    component: <AboutOrganization />,
+  },
+];
+
 const Activity = () => {
-  const [dropdownValue, setDropdownValue] = useState("");
+  const [selectedActivity, setSelectedActivity] = useState("");
 
   const handleActivityChange = (value) => {
-    setDropdownValue(value);
+    setSelectedActivity(value);
   };
+
+  const activityComponent = ACTIVITY_OPTIONS.find(
+    (option) => option.value === selectedActivity
+  )?.component;
 
   return (
     <>
@@ -19,18 +34,13 @@ const Activity = () => {
             defaultValue="Выберите вид деятельности"
             style={{ width: 220 }}
             size="large"
-            options={[
-              { value: "Индивидуальный предприниматель (ИП)" },
-              { value: "Общество с ограниченной ответственностью (ООО)" },
-            ]}
+            options={ACTIVITY_OPTIONS.map((option) => ({
+              value: option.value,
+            }))}
           />
         </Space>
       </Form.Item>
-      {dropdownValue === "Общество с ограниченной ответственностью (ООО)" ? (
-        <AboutOrganization />
-      ) : dropdownValue === "Индивидуальный предприниматель (ИП)" ? (
-        <AboutEntrepreneur />
-      ) : null}
+      {activityComponent}
     </>
   );
 };
