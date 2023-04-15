@@ -3,7 +3,7 @@
 ## How to start?
 clone this repository and:
 ### npm install
-### npm start
+### npm run dev
 ### go to http://localhost:5173/
 
 ## Demo
