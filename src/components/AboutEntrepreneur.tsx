@@ -1,15 +1,21 @@
 import { Form, Input } from "antd";
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import DragAndDrop from "./DragAndDrop";
 
-const AboutEntrepreneur = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  inn: string;
+  registrationDate: string;
+  ogrnip: string;
+}
+
+const AboutEntrepreneur: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     inn: "",
     registrationDate: "",
     ogrnip: "",
   });
 
-  const handleFormChange = (fieldName, value) => {
+  const handleFormChange = (fieldName: keyof FormData, value: string) => {
     setFormData((prevState) => ({ ...prevState, [fieldName]: value }));
   };
 
@@ -26,7 +32,9 @@ const AboutEntrepreneur = () => {
           type="number"
           size="large"
           value={formData.inn}
-          onChange={(e) => handleFormChange("inn", e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            handleFormChange("inn", e.target.value)
+          }
           placeholder="Введите ИНН"
         />
       </Form.Item>
@@ -44,7 +52,9 @@ const AboutEntrepreneur = () => {
           type="number"
           size="large"
           value={formData.ogrnip}
-          onChange={(e) => handleFormChange("ogrnip", e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            handleFormChange("ogrnip", e.target.value)
+          }
           placeholder="Введите ОГРНИП"
         />
       </Form.Item>
@@ -58,7 +68,9 @@ const AboutEntrepreneur = () => {
           type="date"
           size="large"
           value={formData.registrationDate}
-          onChange={(e) => handleFormChange("registrationDate", e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            handleFormChange("registrationDate", e.target.value)
+          }
           placeholder="Введите дату регистрации"
         />
       </Form.Item>

@@ -1,10 +1,10 @@
 import { Form, Switch } from "antd";
 import React, { useState } from "react";
 
-const SwitchComponent = () => {
-  const [switchValue, setSwitchValue] = useState(false);
+const SwitchComponent: React.FC = () => {
+  const [switchValue, setSwitchValue] = useState<boolean>(false);
 
-  const handleSwitchChange = (checked) => {
+  const handleSwitchChange = (checked: boolean) => {
     setSwitchValue(checked);
   };
 

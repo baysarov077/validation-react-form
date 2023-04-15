@@ -1,10 +1,12 @@
 import React from "react";
 import { InboxOutlined } from "@ant-design/icons";
 import { Form, message, Upload } from "antd";
+import { RcFile } from "antd/lib/upload/interface";
+import type { UploadProps } from 'antd';
 
 const { Dragger } = Upload;
 
-const props = {
+const props: UploadProps = {
   name: "file",
   multiple: true,
   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -19,7 +21,7 @@ const props = {
       message.error(`${info.file.name} file upload failed.`);
     }
   },
-  onDrop(e) {
+  onDrop(e: React.DragEvent<HTMLDivElement>) {
     console.log("Dropped files", e.dataTransfer.files);
   },
 };

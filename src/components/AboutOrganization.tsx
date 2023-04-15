@@ -2,8 +2,16 @@ import { Form, Input } from "antd";
 import React, { useState } from "react";
 import DragAndDrop from "./DragAndDrop";
 
-function AboutOrganization() {
-  const [organizationData, setOrganizationData] = useState({
+interface OrganizationData {
+  inn: string;
+  fullName: string;
+  shortName: string;
+  registrationDate: string;
+  ogrn: string;
+}
+
+function AboutOrganization(): JSX.Element {
+  const [organizationData, setOrganizationData] = useState<OrganizationData>({
     inn: "",
     fullName: "",
     shortName: "",
@@ -11,7 +19,7 @@ function AboutOrganization() {
     ogrn: "",
   });
 
-  async function fetchOrganizationDataByInn(inn) {
+  async function fetchOrganizationDataByInn(inn: string): Promise<any> {
     const url = `https://npd.nalog.ru/api/inn-proc.json?req=${inn}`;
     const response = await fetch(url);
     const data = await response.json();
@@ -29,7 +37,7 @@ function AboutOrganization() {
     });
   }
 
-  function handleChange(key, value) {
+  function handleChange(key: keyof OrganizationData, value: string) {
     setOrganizationData({
       ...organizationData,
       [key]: value,
@@ -88,7 +96,9 @@ function AboutOrganization() {
           onChange={(e) => handleChange("ogrn", e.target.value)}
         />
       </Form.Item>
-      <DragAndDrop />
+      <Form.Item>
+        <DragAndDrop />
+      </Form.Item>
     </>
   );
 }

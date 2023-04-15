@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import AboutEntrepreneur from "./AboutEntrepreneur";
 import AboutOrganization from "./AboutOrganization";
 
-const ACTIVITY_OPTIONS = [
+interface ActivityOption {
+  value: string;
+  component: JSX.Element;
+}
+
+const ACTIVITY_OPTIONS: ActivityOption[] = [
   {
     value: "Индивидуальный предприниматель (ИП)",
     component: <AboutEntrepreneur />,
@@ -14,10 +19,10 @@ const ACTIVITY_OPTIONS = [
   },
 ];
 
-const Activity = () => {
-  const [selectedActivity, setSelectedActivity] = useState("");
+const Activity: React.FC = () => {
+  const [selectedActivity, setSelectedActivity] = useState<string>("");
 
-  const handleActivityChange = (value) => {
+  const handleActivityChange = (value: string) => {
     setSelectedActivity(value);
   };
 
