@@ -2,7 +2,7 @@ import React from "react";
 import { InboxOutlined } from "@ant-design/icons";
 import { Form, message, Upload } from "antd";
 import { RcFile } from "antd/lib/upload/interface";
-import type { UploadProps } from 'antd';
+import type { UploadProps } from "antd";
 
 const { Dragger } = Upload;
 

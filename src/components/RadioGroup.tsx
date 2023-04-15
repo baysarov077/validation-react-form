@@ -1,6 +1,6 @@
 import { Form, Radio, Space } from "antd";
 import React, { useState } from "react";
-import type { RadioChangeEvent } from 'antd';
+import type { RadioChangeEvent } from "antd";
 
 const RadioGroup: React.FC = () => {
   const [radioValue, setRadioValue] = useState<string>("");

@@ -1,6 +1,6 @@
 import { Checkbox, Form } from "antd";
 import React, { useState } from "react";
-import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import type { CheckboxChangeEvent } from "antd/es/checkbox";
 
 const RememberMe: React.FC = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
