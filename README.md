@@ -2,9 +2,9 @@
 
 ## How to start?
 clone this repository and:
-### npm install
-### npm run dev
-### go to http://localhost:5173/
+### `npm install`
+### `npm run dev`
+Open [http://localhost:5173/](http://localhost:5173/) to view it in your browser.
 
 ## Demo
 
